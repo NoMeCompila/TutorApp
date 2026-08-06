@@ -10,9 +10,8 @@
 
 | 📱 Dashboard Principal | 👤 Perfil y Detalle del Alumno |
 | :---: | :---: |
-| ![Dashboard de TutorApp](<img width="436" height="895" alt="image" src="https://github.com/user-attachments/assets/a378a23b-45dc-4b7e-9393-94405b77e2f7" />
-) | ![Detalle del Alumno](<img width="435" height="896" alt="image" src="https://github.com/user-attachments/assets/2767def4-b02f-4a8f-b2c8-507f8f5faa54" />
-) |
+|<img width="436" height="895" alt="image" src="https://github.com/user-attachments/assets/a378a23b-45dc-4b7e-9393-94405b77e2f7" />| 
+|<img width="435" height="896" alt="image" src="https://github.com/user-attachments/assets/2767def4-b02f-4a8f-b2c8-507f8f5faa54" />|
 
 | 🔑 Iniciar Sesión / Registro | 💳 Registrar Cobro |
 | :---: | :---: |
