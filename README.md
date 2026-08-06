@@ -8,16 +8,32 @@
 
 <div align="center">
 
-| 📱 Dashboard Principal | 👤 Perfil y Detalle del Alumno |
-| :---: | :---: |
-|<img width="436" height="895" alt="image" src="https://github.com/user-attachments/assets/a378a23b-45dc-4b7e-9393-94405b77e2f7" />| 
-|<img width="435" height="896" alt="image" src="https://github.com/user-attachments/assets/2767def4-b02f-4a8f-b2c8-507f8f5faa54" />|
-
-| 🔑 Iniciar Sesión / Registro | 💳 Registrar Cobro |
-| :---: | :---: |
-| ![Pantalla de Login](<img width="437" height="894" alt="image" src="https://github.com/user-attachments/assets/75ebf631-efda-4d3c-adba-fd0324752c9c" />
-) | ![Modal de Registro de Pago](<img width="435" height="897" alt="image" src="https://github.com/user-attachments/assets/dfde7cd0-a0b9-4a7d-85bf-97f47c7b4c43" />
-) |
+<table>
+  <tr>
+    <td align="center"><b>📱 Dashboard Principal</b></td>
+    <td align="center"><b>👤 Perfil y Detalle del Alumno</b></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/a378a23b-45dc-4b7e-9393-94405b77e2f7" width="300" alt="Dashboard Principal" />
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/2767def4-b02f-4a8f-b2c8-507f8f5faa54" width="300" alt="Detalle del Alumno" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>🔑 Iniciar Sesión / Registro</b></td>
+    <td align="center"><b>💳 Registrar Cobro</b></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/75ebf631-efda-4d3c-adba-fd0324752c9c" width="300" alt="Pantalla de Login" />
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/dfde7cd0-a0b9-4a7d-85bf-97f47c7b4c43" width="300" alt="Registrar Cobro" />
+    </td>
+  </tr>
+</table>
 
 </div>
 
