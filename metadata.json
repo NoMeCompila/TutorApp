@@ -1,0 +1,6 @@
+{
+  "name": "TutorApp",
+  "description": "Gestión de cobros, cuotas y alumnos para tutores y profesores (PWA)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
