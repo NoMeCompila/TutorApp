@@ -18,7 +18,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
   currencySymbol = '$',
 }) => {
   const [name, setName] = useState('');
-  const [countryCode, setCountryCode] = useState('+52');
+  const [countryCode, setCountryCode] = useState('+54');
   const [phone, setPhone] = useState('');
   const [subject, setSubject] = useState('');
   const [customSubject, setCustomSubject] = useState('');
@@ -41,7 +41,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
   useEffect(() => {
     if (initialStudent) {
       setName(initialStudent.name);
-      setCountryCode(initialStudent.countryCode || '+52');
+      setCountryCode(initialStudent.countryCode || '+54');
       setPhone(initialStudent.phone || '');
       if (subjectsList.includes(initialStudent.subject)) {
         setSubject(initialStudent.subject);
@@ -56,7 +56,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
     } else {
       // Default new student values
       setName('');
-      setCountryCode('+52');
+      setCountryCode('+54');
       setPhone('');
       setSubject('');
       setCustomSubject('');
