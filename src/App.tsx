@@ -260,8 +260,17 @@ export default function App() {
     showToast('Datos restablecidos a los valores iniciales de prueba');
   };
 
-  const handleUpdateProfile = (updated: Partial<UserProfile>) => {
+  const handleUpdateProfile = async (updated: Partial<UserProfile>) => {
     setUserProfile((prev) => ({ ...prev, ...updated }));
+    try {
+      const session = await authService.getSession();
+      if (session?.user) {
+        await authService.updateProfile(session.user.id, updated);
+      }
+    } catch (e: any) {
+      console.error('Error al actualizar el perfil en Supabase:', e);
+      showToast('Error al guardar algunos ajustes en Supabase', 'error');
+    }
   };
 
   // If not authenticated, render Login view

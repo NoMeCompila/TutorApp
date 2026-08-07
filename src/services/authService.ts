@@ -65,11 +65,33 @@ export const authService = {
 
     return {
       name: data.full_name || 'Maestra TutorApp',
-      role: 'Tutora Principal',
+      role: data.role || 'Tutora Principal',
       avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-      customWhatsappMsg: 'Hola {student_name}, te recuerdo que el pago de {subject} vence el {due_date}. El monto es {amount}.',
-      currencySymbol: '$',
+      customWhatsappMsg:
+        data.custom_whatsapp_msg ||
+        'Hola {nombre}, te recuerdo que el pago de {monto} para las clases de {materia} vence el {fecha}. ¡Muchas gracias!',
+      currencySymbol: data.currency_symbol || '$',
     };
+  },
+
+  /**
+   * Actualizar el perfil en la tabla `profiles` de Supabase
+   */
+  async updateProfile(userId: string, updates: Partial<UserProfile>) {
+    const payload: Record<string, any> = {};
+    if (updates.name !== undefined) payload.full_name = updates.name;
+    if (updates.role !== undefined) payload.role = updates.role;
+    if (updates.currencySymbol !== undefined) payload.currency_symbol = updates.currencySymbol;
+    if (updates.customWhatsappMsg !== undefined) payload.custom_whatsapp_msg = updates.customWhatsappMsg;
+
+    const { error } = await supabase
+      .from('profiles')
+      .update(payload)
+      .eq('id', userId);
+
+    if (error) {
+      throw error;
+    }
   },
 
   /**
