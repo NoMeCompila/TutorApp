@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, ChevronLeft, Check, Sparkles } from 'lucide-react';
+import { Bell, ChevronLeft, Check, Sparkles, User } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeaderBarProps {
@@ -40,11 +40,9 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <img
-              src={user.avatarUrl}
-              alt={user.name}
-              className="w-10 h-10 rounded-full object-cover shadow-xs border-2 border-indigo-100 ring-2 ring-indigo-500/10"
-            />
+            <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center shadow-xs border border-indigo-200 shrink-0">
+              <User className="w-5 h-5" />
+            </div>
             <div>
               <h1 className="text-base font-bold text-slate-900 leading-tight">
                 Hola, {user.name.split(' ')[0]}
