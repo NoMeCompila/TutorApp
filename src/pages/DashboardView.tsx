@@ -58,7 +58,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   return (
     <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-slate-100">
       {/* Search Bar & Filter Capsules Sticky Header */}
-      <div className="sticky top-16 z-20 bg-slate-100/95 backdrop-blur-md px-4 pt-3 pb-3 border-b border-slate-200/60 shadow-2xs space-y-3">
+      <div className="sticky top-0 z-20 bg-slate-100/95 backdrop-blur-md px-4 pt-3 pb-3 border-b border-slate-200/60 shadow-2xs space-y-3">
         {/* Search Input */}
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
