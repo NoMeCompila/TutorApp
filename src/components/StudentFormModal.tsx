@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, User, Phone, BookOpen, Calendar, Save } from 'lucide-react';
+import { X, User, Phone, BookOpen, Calendar, Save, Contact } from 'lucide-react';
 import { Student } from '../types';
 
 interface StudentFormModalProps {
@@ -20,21 +20,32 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
   const [name, setName] = useState('');
   const [countryCode, setCountryCode] = useState('+54');
   const [phone, setPhone] = useState('');
-  const [subject, setSubject] = useState('');
+  const [subject, setSubject] = useState('Todas las Materias');
   const [customSubject, setCustomSubject] = useState('');
   const [amount, setAmount] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [notes, setNotes] = useState('');
 
   const subjectsList = [
-    'Matemáticas',
-    'Inglés',
-    'Física',
-    'Guitarra',
-    'Química',
-    'Historia',
+    'Todas las Materias',
     'Biología',
-    'Programación',
+    'Ciencias Naturales',
+    'Ciencias Sociales',
+    'Economía',
+    'Educación Artística',
+    'Educación Física',
+    'Física',
+    'Físico-Química',
+    'Formación Ética',
+    'Historia',
+    'Idioma Extranjero',
+    'Lengua',
+    'Matemática',
+    'Música',
+    'Plástica',
+    'Química',
+    'Teatro',
+    'TIC',
     'Otro',
   ];
 
@@ -58,7 +69,7 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
       setName('');
       setCountryCode('+54');
       setPhone('');
-      setSubject('');
+      setSubject('Todas las Materias');
       setCustomSubject('');
       setAmount('');
       // Default due date to today + 30 days
@@ -71,6 +82,39 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
       setNotes('');
     }
   }, [initialStudent, isOpen]);
+
+  const handleSelectContact = async () => {
+    if ('contacts' in navigator && 'ContactsManager' in window) {
+      try {
+        const props = ['name', 'tel'];
+        const opts = { multiple: false };
+        const contacts = await (navigator as any).contacts.select(props, opts);
+        if (contacts && contacts.length > 0) {
+          const contact = contacts[0];
+          // Autofill name if empty
+          if (!name.trim() && contact.name && contact.name[0]) {
+            setName(contact.name[0]);
+          }
+          // Parse phone number
+          if (contact.tel && contact.tel[0]) {
+            let rawPhone = contact.tel[0].trim();
+            const supportedCodes = ['+54', '+52', '+1', '+34', '+57', '+56', '+51'];
+            const matchedCode = supportedCodes.find((code) => rawPhone.startsWith(code));
+            if (matchedCode) {
+              setCountryCode(matchedCode);
+              rawPhone = rawPhone.slice(matchedCode.length);
+            }
+            const cleanDigits = rawPhone.replace(/\D/g, '');
+            setPhone(cleanDigits);
+          }
+        }
+      } catch (err: any) {
+        console.log('Contact selection cancelled or failed:', err);
+      }
+    } else {
+      alert('La selección directa de contactos requiere un navegador móvil compatible (ej. Google Chrome en Android).');
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -168,6 +212,15 @@ export const StudentFormModal: React.FC<StudentFormModalProps> = ({
                   className="w-full h-12 pl-10 pr-4 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none transition-all text-base font-medium"
                 />
               </div>
+              <button
+                type="button"
+                onClick={handleSelectContact}
+                title="Seleccionar contacto de la agenda"
+                aria-label="Seleccionar contacto de la agenda"
+                className="h-12 w-12 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-xl flex items-center justify-center transition-colors shrink-0 active:scale-95 shadow-xs"
+              >
+                <Contact className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
