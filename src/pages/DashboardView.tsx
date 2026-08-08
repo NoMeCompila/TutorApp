@@ -55,6 +55,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     });
   }, [students, searchTerm, activeFilter]);
 
+  const handleFilterClick = (filter: SubscriptionStatus) => {
+    setActiveFilter((prev) => (prev === filter ? 'ALL' : filter));
+  };
+
   return (
     <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-slate-100">
       {/* Search Bar & Filter Capsules Sticky Header */}
@@ -81,21 +85,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
         {/* Filter Pills */}
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4 text-xs font-semibold">
-          {/* Todos */}
-          <button
-            onClick={() => setActiveFilter('ALL')}
-            className={`whitespace-nowrap px-4 py-2 rounded-full min-h-[36px] transition-all flex items-center gap-1.5 ${
-              activeFilter === 'ALL'
-                ? 'bg-indigo-600 text-white shadow-xs font-bold'
-                : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-50'
-            }`}
-          >
-            Todos ({counts.total})
-          </button>
-
           {/* Vencidos */}
           <button
-            onClick={() => setActiveFilter('OVERDUE')}
+            onClick={() => handleFilterClick('OVERDUE')}
             className={`whitespace-nowrap px-3.5 py-2 rounded-full min-h-[36px] transition-all flex items-center gap-1.5 ${
               activeFilter === 'OVERDUE'
                 ? 'bg-rose-600 text-white shadow-xs font-bold'
@@ -103,13 +95,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             }`}
           >
             Vencidos
-            <span className="w-2 h-2 rounded-full bg-rose-500 inline-block" />
+            <span className={`w-2 h-2 rounded-full inline-block ${activeFilter === 'OVERDUE' ? 'bg-white' : 'bg-rose-500'}`} />
             <span>({counts.overdue})</span>
           </button>
 
           {/* Por Vencer */}
           <button
-            onClick={() => setActiveFilter('DUE_SOON')}
+            onClick={() => handleFilterClick('DUE_SOON')}
             className={`whitespace-nowrap px-3.5 py-2 rounded-full min-h-[36px] transition-all flex items-center gap-1.5 ${
               activeFilter === 'DUE_SOON'
                 ? 'bg-amber-600 text-white shadow-xs font-bold'
@@ -117,13 +109,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             }`}
           >
             Por Vencer
-            <span className="w-2 h-2 rounded-full bg-amber-500 inline-block" />
+            <span className={`w-2 h-2 rounded-full inline-block ${activeFilter === 'DUE_SOON' ? 'bg-white' : 'bg-amber-500'}`} />
             <span>({counts.dueSoon})</span>
           </button>
 
           {/* Al Día */}
           <button
-            onClick={() => setActiveFilter('UP_TO_DATE')}
+            onClick={() => handleFilterClick('UP_TO_DATE')}
             className={`whitespace-nowrap px-3.5 py-2 rounded-full min-h-[36px] transition-all flex items-center gap-1.5 ${
               activeFilter === 'UP_TO_DATE'
                 ? 'bg-emerald-600 text-white shadow-xs font-bold'
@@ -131,7 +123,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             }`}
           >
             Al Día
-            <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
+            <span className={`w-2 h-2 rounded-full inline-block ${activeFilter === 'UP_TO_DATE' ? 'bg-white' : 'bg-emerald-500'}`} />
             <span>({counts.upToDate})</span>
           </button>
         </div>
